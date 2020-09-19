@@ -7,7 +7,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-cities = ["Chicago", "New York City", "Washington", 'All']
+cities = ["Chicago", "New York City", "Washington"]
 months = ["January", "February", "March", "April", "May", "June", "All"]
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "All"]
 
@@ -49,11 +49,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.DataFrame()
-    if city == 'All':
-        for place in CITY_DATA:
-            df = df.append(pd.read_csv[CITY_DATA[place]])
-    else:
-        df = df.append(pd.read_csv(CITY_DATA[city.lower()]))
+    df = df.append(pd.read_csv(CITY_DATA[city.lower()]))
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month
