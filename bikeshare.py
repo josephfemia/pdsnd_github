@@ -7,7 +7,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-cities = ["Chicago", "New York City", "Washington", 'All']
+cities = ["Chicago", "New York City", "Washington"]
 months = ["January", "February", "March", "April", "May", "June", "All"]
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "All"]
 
@@ -21,7 +21,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    city = input('Which city, Chicago, New York City, or Washington, would you like to look at? If you want all cities to be included please type all.\n').title()
+    city = input('Which city, Chicago, New York City, or Washington, would you like to look at?\n').title()
     while city not in cities:
         city = input('Error: You did not enter a valid city. Please select one of the following: Chicago, New York City, Washington, or all for no filter.\n').title()
 
@@ -48,12 +48,7 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
-    df = pd.DataFrame()
-    if city == 'All':
-        for place in CITY_DATA:
-            df = df.append(pd.read_csv[CITY_DATA[place]])
-    else:
-        df = df.append(pd.read_csv(CITY_DATA[city.lower()]))
+    df = pd.DataFrame(pd.read_csv(CITY_DATA[city.lower()]))
 
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['Month'] = df['Start Time'].dt.month
