@@ -159,7 +159,7 @@ def user_stats(df):
 
 
 def raw_data(df):
-    """Will display 5 lines at a time of raw data until user stops"""
+    """Displays 5 lines of raw data at a time until user stops"""
     multiple_of_5 = range(5, len(df.index) + 1, 5)
     counter = 0
     while True:
